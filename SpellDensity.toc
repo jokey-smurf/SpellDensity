@@ -1,0 +1,10 @@
+## Interface: 120000, 120001
+## Title: |cff00CED1Spell Density|r
+## Version: 1.0.0
+## Notes: Sets the CVAR, spellVisualDensityFilterSetting, to 1 upon logging in or changing zones.
+## Author: Jokey Smurf
+## IconTexture: Interface\AddOns\SpellDensity\Media\logo
+
+## Category-enUS: Smurf
+
+SpellDensity.lua

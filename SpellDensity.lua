@@ -1,5 +1,6 @@
 local addonName, ns = ...
 
+-- 1 - minimum, 2 - reduced, 3 - performance, 4 - full
 local DEFAULT_spellVisualDensityFilterSetting = 1
 
 -- Addon name
@@ -9,25 +10,29 @@ local function AddonName(color)
 end
 
 -- print() with addon name
-local function Msg(msg, value)
-    value = value or ""
-    print(AddonName() .. ": " .. msg .. " " .. value)
+local function Msg(msg, ...)
+    print(AddonName() .. ": " .. msg, ...)
 end
 
 local function IsLockedDown()
     return InCombatLockdown() or C_ChallengeMode.IsChallengeModeActive()
 end
 
--- login message
-local _version = C_AddOns.GetAddOnMetadata(addonName, "Version") or ""
-Msg("Version", version)
+local SVDF_CVAR_NAME = "spellVisualDensityFilterSetting"
+local MIN_SVDF = 1
+local MAX_SVDF = 4
 
 local function SetSpellDensity(display)
-    C_CVar.SetCVar('spellVisualDensityFilterSetting', DEFAULT_spellVisualDensityFilterSetting)
+    local original = C_CVar.GetCVar(SVDF_CVAR_NAME)
+    local svdf = math.max(MIN_SVDF, DEFAULT_spellVisualDensityFilterSetting)
+    svdf = math.min(svdf, MAX_SVDF)
+    C_CVar.SetCVar(SVDF_CVAR_NAME, svdf)
 
+    if not display then
+        display = original ~= svdf
+    end
     if display then
-        local svdfs = C_CVar.GetCVar('spellVisualDensityFilterSetting')
-        Msg(AddonName(), "Spell Density " .. svdfs)
+        Msg("Old value was", original, "- New value is", C_CVar.GetCVar('spellVisualDensityFilterSetting'))
     end
 end
 

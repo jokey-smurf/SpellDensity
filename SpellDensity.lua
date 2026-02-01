@@ -24,15 +24,15 @@ local MAX_SVDF = 4
 
 local function SetSpellDensity(display)
     local original = C_CVar.GetCVar(SVDF_CVAR_NAME)
-    local svdf = math.max(MIN_SVDF, DEFAULT_spellVisualDensityFilterSetting)
-    svdf = math.min(svdf, MAX_SVDF)
+    local svdf = math.min(math.max(MIN_SVDF, DEFAULT_spellVisualDensityFilterSetting), MAX_SVDF)
     C_CVar.SetCVar(SVDF_CVAR_NAME, svdf)
+    svdf = C_CVar.GetCVar('spellVisualDensityFilterSetting')
 
     if not display then
         display = original ~= svdf
     end
     if display then
-        Msg("Old value was", original, "- New value is", C_CVar.GetCVar('spellVisualDensityFilterSetting'))
+        Msg("Old value was", original, "- New value is", svdf)
     end
 end
 

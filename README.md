@@ -6,7 +6,7 @@ Inidications are, this is currently fixed and no longer needed.  But I'm just go
 this out there anyhow, as we know Blizzard loves to reintroduce old bugs.
 
 In the spirit of keeping this addon simple and lightweight, there is no UI for customization.  
-However, one can edit the values at the top the SpellDensity.lua file, as illustrated below.
+However, one can edit the values at the top of the SpellDensity.lua file, as illustrated below.
 
 ```
 -- 1 - minimum, 2 - reduced, 3 - performance, 4 - full

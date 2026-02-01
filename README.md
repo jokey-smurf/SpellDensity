@@ -13,4 +13,4 @@ However, one can edit the values at the top the SpellDensity.lua file, as illust
 local DEFAULT_spellVisualDensityFilterSetting = 1  
 ```
 
-Coded with 100% __VIBE__
+Coded with 100% **VIBE**
